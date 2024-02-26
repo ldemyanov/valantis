@@ -1,0 +1,15 @@
+.title {
+  font-size: 24px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+.empty {
+  width: 100%;
+  text-align: center;
+}

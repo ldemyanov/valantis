@@ -1,0 +1,74 @@
+@import "../../variables.css";
+
+.panel {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0 30px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--light-grey);
+  outline: none;
+  caret-color: var(--light-blue);
+  font-size: 16px;
+}
+
+.input:focus {
+  border-color: var(--light-blue);
+}
+
+.button {
+  background: var(--light-blue);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 0 30px;
+  font-size: 16px;
+  color: var(--light-grey);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchIcon {
+  fill: var(--light-grey);
+}
+
+/* Cross browsing styles */
+
+.input::placeholder {
+  color: var(--grey-text);
+  font-family: "Nunito", sans-serif;
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--grey-text);
+  font-family: "Nunito", sans-serif;
+}
+
+.input::-moz-placeholder {
+  color: var(--grey-text);
+  font-family: "Nunito", sans-serif;
+}
+
+.input::-ms-input-placeholder {
+  color: var(--grey-text);
+  font-family: "Nunito", sans-serif;
+}
+
+.input:-ms-input-placeholder {
+  color: var(--grey-text);
+  font-family: "Nunito", sans-serif;
+}
+
+input[type="number"].input::-webkit-inner-spin-button,
+input[type="number"].input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"].input {
+  -moz-appearance: textfield;
+}

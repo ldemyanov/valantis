@@ -1,0 +1,33 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 180px;
+  height: 180px;
+  background: var(--background-blue);
+  text-align: center;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.name {
+  background-color: var(--light-grey);
+  border-radius: 16px;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.id {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+.brand {
+  font-weight: 800;
+}
+
+.price {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--green);
+}
