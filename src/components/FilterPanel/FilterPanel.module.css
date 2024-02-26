@@ -1,20 +1,96 @@
 @import "../../variables.css";
 
 .panel {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-width: 980px;
   display: flex;
+  justify-content: center;
   gap: 10px;
-  padding: 20px 0 30px;
+  padding: 10px 0 10px;
+  background: white;
+}
+
+@media (max-width: 980px) {
+  .panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px 0;
+    position: static;
+    max-width: 790px;
+  }
+}
+
+@media (max-width: 790px) {
+  .panel {
+    max-width: 590px;
+  }
 }
 
 .input {
+  box-sizing: border-box;
   padding: 10px;
   border-radius: 8px;
+  height: 48px;
+  width: 240px;
   border: 2px solid var(--light-grey);
   outline: none;
   caret-color: var(--light-blue);
   font-size: 16px;
+  flex-grow: 1;
 }
 
+.inputPrice {
+  width: 160px;
+}
+
+.selectContainer {
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 2px solid var(--light-grey);
+  outline: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+}
+
+.select option {
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  stroke: var(--light-grey);
+}
+
+.select:focus + .selectIcon {
+  stroke: var(--light-blue);
+  transform: rotate(180deg);
+  top: 40%;
+}
+
+.select:focus,
 .input:focus {
   border-color: var(--light-blue);
 }
@@ -24,16 +100,26 @@
   border: none;
   outline: none;
   border-radius: 8px;
-  padding: 0 30px;
+  padding: 0 15px;
   font-size: 16px;
   color: var(--light-grey);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  height: 48px;
+  cursor: pointer;
 }
 
 .searchIcon {
   fill: var(--light-grey);
+}
+
+.button:hover {
+  color: white;
+}
+.button:hover + .searchIcon {
+  fill: white;
 }
 
 /* Cross browsing styles */

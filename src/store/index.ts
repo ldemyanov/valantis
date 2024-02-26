@@ -5,6 +5,7 @@ import { valantisApi } from './api/valantis'
 export const store = configureStore({
   reducer: {
     counter,
+    
     [valantisApi.reducerPath]: valantisApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

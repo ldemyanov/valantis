@@ -1,20 +1,30 @@
 .product {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   width: 180px;
-  height: 180px;
+  min-height: 160px;
+  height: fit-content;
   background: var(--background-blue);
   text-align: center;
-  border-radius: 16px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+@media (max-width: 790px) {
+  .product {
+    width: calc(50% - 15px);
+    height: fit-content;
+    min-height: 50px;
+  }
 }
 
 .name {
+  font-size: 14px;
   background-color: var(--light-grey);
-  border-radius: 16px;
+  border-radius: 8px;
   font-weight: 600;
-  padding: 5px;
+  padding: 5px 4px;
 }
 
 .id {

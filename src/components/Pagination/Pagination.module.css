@@ -1,13 +1,36 @@
 .pagination {
+  position: fixed;
+  background: white;
+  height: fit-content;
+  width: 100%;
+  max-width: 980px;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 30px 20px;
+  padding: 15px 0 20px;
   gap: 30px;
-  width: fit-content;
-  height: fit-content;
-  margin: auto;
+  margin: auto auto 0;
   border-radius: 2px;
+}
+
+@media (max-width: 980px) {
+  .pagination {
+    max-width: 790px;
+  }
+}
+
+@media (max-width: 790px) {
+  .pagination {
+    max-width: 590px;
+  }
+}
+
+@media (max-width: 590px) {
+  .pagination {
+    width: 100%;
+    left: 0;
+  }
 }
 
 .button {
@@ -15,6 +38,7 @@
   border: none;
   outline: none;
   padding: 0;
+  transition: 0.3 ease;
 }
 
 .number {
@@ -38,23 +62,29 @@
 .arrow {
   fill: var(--light-blue);
   transform: scale(1.5);
+  transition: 0.4 ease;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  transform: rotate(20deg) scale(1.4);
 }
 
 .loader {
+  --gradient: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
   width: 24px;
   padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--light-blue);
-  --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
-  -webkit-mask: var(--_m);
-  mask: var(--_m);
+  -webkit-mask: var(--gradient);
+  mask: var(--gradient);
   -webkit-mask-composite: source-out;
   mask-composite: subtract;
-  animation: l3 1s infinite linear;
+  animation: loaderAnimation 1s infinite linear;
 }
 
-@keyframes l3 {
+@keyframes loaderAnimation {
   to {
     transform: rotate(1turn);
   }

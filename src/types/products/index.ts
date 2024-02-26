@@ -12,6 +12,7 @@ export type ProductIds = {
 export type GetItemsResult = { result: ProductItem[] }
 
 export type GetIdsResult = { result: string[] }
+export type GetBrandsResult = { result: string[] }
 
 export type PaginationParams = {
   offset: number,

@@ -1,18 +1,26 @@
+import { useEffect } from "react";
 import { useGetItemsQuery } from "../../store/api/valantis";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductsLoader from "../ProductsLoader/ProductsLoader";
 import css from "./ProductsContainer.module.css";
 
 type ProductsContainerProps = {
-  ids: string[];
-  isIdsLoading: boolean;
+  setProductsFetching: (isFetching: boolean) => void;
+  productIds: string[];
+  isProductsFetching: boolean;
 };
 
-const ProductsContainer: React.FC<ProductsContainerProps> = ({ ids, isIdsLoading }) => {
-  const { data, isLoading, isFetching } = useGetItemsQuery({ ids });
+const ProductsContainer: React.FC<ProductsContainerProps> = (props) => {
+  const { isProductsFetching, productIds, setProductsFetching } = props;
+
+  const { data, isFetching } = useGetItemsQuery({ ids: productIds });
   const isData = data && data.result.length > 0;
 
-  if (isIdsLoading || isLoading || isFetching) {
+  useEffect(() => {
+    setProductsFetching(isFetching);
+  }, [isFetching, setProductsFetching]);
+
+  if (isProductsFetching) {
     return <ProductsLoader />;
   }
 

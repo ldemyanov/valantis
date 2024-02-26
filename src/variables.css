@@ -5,3 +5,19 @@
   --background-blue: #f9fcff;
   --green: #3bb73b;
 }
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}

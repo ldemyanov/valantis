@@ -1,33 +1,25 @@
 import { useState } from "react";
 import { useGetIdsQuery } from "../../store/api/valantis";
-import { LOAD_LIMIT, VISIBLE_LIMIT } from "../../store/constants";
+import { LOAD_LIMIT, VISIBLE_LIMIT } from "../../constants";
 import Pagination from "../Pagination/Pagination";
 import ProductsContainer from "../ProductsContainer/ProductsContainer";
 
 const ProductsFetcher: React.FC = () => {
-  const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
-  const { data, isLoading, isFetching } = useGetIdsQuery({ limit: LOAD_LIMIT, offset });
-
-  const toNextPage = () => {
-    setOffset((value) => value + VISIBLE_LIMIT);
-    setPage((value) => value + 1);
-  };
-
-  const toPrevPage = () => {
-    setOffset((value) => value - VISIBLE_LIMIT);
-    setPage((value) => value - 1);
-  };
+  const [isProductsFetching, setProductsFetching] = useState(true);
+  const { data } = useGetIdsQuery({ limit: LOAD_LIMIT, offset });
 
   return (
     <>
-      <ProductsContainer ids={data?.result ? data.result : []} isIdsLoading={isLoading || isFetching} />
+      <ProductsContainer
+        productIds={data?.result ? data.result : []}
+        isProductsFetching={isProductsFetching}
+        setProductsFetching={setProductsFetching}
+      />
       <Pagination
-        isLoading={isLoading || isFetching}
+        isLoading={isProductsFetching}
         isFinish={!!data && data.result.length < VISIBLE_LIMIT}
-        page={page}
-        toNextPage={toNextPage}
-        toPrevPage={toPrevPage}
+        setOffset={setOffset}
       />
     </>
   );

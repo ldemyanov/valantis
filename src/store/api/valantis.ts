@@ -1,6 +1,6 @@
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getMD5PasswordWithTimestamp } from '../../utils/time'
-import type { FilterParams, GetIdsResult, GetItemsResult, PaginationParams, ProductIds } from '../../types/products';
+import type { FilterParams, GetBrandsResult, GetIdsResult, GetItemsResult, PaginationParams, ProductIds } from '../../types/products';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://api.valantis.store:40000/',
@@ -61,19 +61,32 @@ export const valantisApi = createApi({
           action: "get_items",
           params
         },
-        extraOptions: { maxRetries: 8 },
         responseHandler: async (response) => {
           const data: GetItemsResult = await response.json();
-
-          const result = data.result.filter((element, index) => {
-            return data.result.findIndex((el) => el.id === element.id) === index;
-          }).slice(0, 50);
-
+          const result = data.result.filter((element, index) => (
+            data.result.findIndex((el) => el.id === element.id) === index
+          )).slice(0, 50);
           return { result }
         }
       }),
     }),
+    getBrands: builder.query<GetBrandsResult, void>({
+      query: () => ({
+        url: '',
+        method: 'POST',
+        body: {
+          action: "get_fields",
+          params: { "field": "brand" }
+        },
+        responseHandler: async (response) => {
+          const data: GetBrandsResult = await response.json();
+          const filteredData = data.result.filter((v) => !!v);
+          const result = Array.from(new Set(filteredData));
+          return { result };
+        }
+      })
+    })
   }),
 })
 
-export const { useGetIdsQuery, useGetItemsQuery, useGetIdsByFilterQuery } = valantisApi;
+export const { useGetIdsQuery, useGetItemsQuery, useGetIdsByFilterQuery, useGetBrandsQuery } = valantisApi;
