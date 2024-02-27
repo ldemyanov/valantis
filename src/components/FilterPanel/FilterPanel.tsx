@@ -41,7 +41,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ setFilter }) => {
             onChange={toggleBrand}
             aria-placeholder={PROP_BRAND}
           >
-            <option value={""} key={"emty"} selected>
+            <option value={""} key={"emty"}>
               {EMPTY_BRAND}
             </option>
             {data.result.map((brand) => (
