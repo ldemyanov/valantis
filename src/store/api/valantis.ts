@@ -3,7 +3,7 @@ import { getMD5PasswordWithTimestamp } from '../../utils/time'
 import type { FilterParams, GetBrandsResult, GetIdsResult, GetItemsResult, PaginationParams, ProductIds } from '../../types/products';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://api.valantis.store:40000/',
+  baseUrl: 'https://api.valantis.store:41000/',
   prepareHeaders: (headers) => {
     headers.set('X-Auth', getMD5PasswordWithTimestamp());
     return headers
